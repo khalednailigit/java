@@ -1,18 +1,16 @@
 import java.io.BufferedReader;
 import java.util.Observable;
+import java.util.Scanner;
 
 public class EventSource extends Observable implements Runnable {
     public void run() {
         
         try {
-            final BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
             while (true){
-                // read a line of text with scanner
-                
-
-                final String response  = br.readLine();
+                Scanner scanner = new Scanner(System.in);
+                String input = scanner.nextLine();
                 this.setChanged();
-                notifyObservers(response);
+                notifyObservers(input);
             }
         } catch (Exception e) {
             e.printStackTrace();
